@@ -9,10 +9,21 @@ exports.getAll = async () => {
 };
 
 exports.getMatchesByPlayerId = async puuid => {
-  console.log(puuid);
-  const allMatches = await matchesModel.find({"participants.puuid": puuid}).toArray();
+  const allMatches = await matchesModel.find({ "participants.puuid": puuid }).toArray();
   return allMatches;
 };
+
+
+exports.getCertainAmountMatches = async number => {
+  const matches = await matchesModel.aggregate([
+    { $sort: { gameCreation: -1 } },
+    { $limit: Number(number) }
+  ]).toArray();
+
+  //find().sort({gameCreation: -1 }).toArray();
+  return matches;
+};
+
 
 exports.postOne = async match => {
   await matchesModel.insertOne(match);

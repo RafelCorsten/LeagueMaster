@@ -17,6 +17,8 @@ router.get('/riot/:server/matches/:puuid', leagueController.getMatchesByPlayerId
 //     return matches, 200
 
 
+//Gets last number amount of matches from the db
+router.get('/riot/:server/matches/amount/:number', leagueController.getCertainAmountMatches);
 //router.post('/riot/:server/summoners/:summonerName', leagueController)
 // def get_summoner_from_riot_api_and_post_to_db():
 //     summoner_name = Flask.request.args.get('summonerName')
@@ -26,6 +28,7 @@ router.get('/riot/:server/matches/:puuid', leagueController.getMatchesByPlayerId
 //     db.summoners.insert_one(summoner_info)
 
 //     return summoner_info, 201
+
 
 
 //router.post('/riot/:server/matches/:puuid', leagueController)
@@ -50,9 +53,6 @@ router.get('/riot/:server/matches/:puuid', leagueController.getMatchesByPlayerId
 //     return 'Couldnt retrieve the matches', 400
 
 router.get('*', leagueController.render404);
-// def page_not_found(e):
-//     return "<h1>404</h1><p>The resource could not be found.</p>", 404
-
 
 
 module.exports = router;
