@@ -19,7 +19,8 @@
     "express-openid-connect": "^2.5.0",
     "mongoose": "^5.13.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "bcrypt": "^5.0.1"
   },
   "bugs": {
     "url": "https://github.com/RafelCorsten/LeagueMaster/issues"

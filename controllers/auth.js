@@ -1,5 +1,5 @@
 const Summoner = require('../models/summoner');
-const User = require('../models/user');
+const User = require('../models/User');
 
 
 exports.register = async (req, res, next) => {
@@ -11,8 +11,11 @@ exports.register = async (req, res, next) => {
       ///// import summoner riot API
     }
 
-    const user = await User.createOne({ username, email, password });
-    res.status(201).json({
+    const user = await User.create({ 
+      username, email, password
+    });
+    res.status(201);
+    res.json({
       success: true,
       user
     });

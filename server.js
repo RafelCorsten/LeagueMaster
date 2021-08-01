@@ -3,7 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const router = require('./routes/router');
 const morgan = require('morgan');
+const connectDB = require('./config/db');
 
+connectDB();
 const PORT = process.env.PORT || 3000;
 
 const app = express();
