@@ -8,6 +8,16 @@ export const getMatchesById = (puuid, server = 'americas') => {
   return customFetch(`/riot/${server}}/matches/${puuid}`);
 };
 
+export const register = (username, email, password) => {
+  return customFetch(`/api/auth/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({username, email, password})
+  });
+};
+
 // export const postEvent = (event) => {
 //   return customFetch('/events', {
 //     method: 'POST',

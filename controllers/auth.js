@@ -89,10 +89,11 @@ exports.forgotPw = async (req, res, next) => {
 }
 
 exports.resetpassword = async (req, res, next) => {
-  const resetPasswordToken = crypto.createHash('sha256').update(req.body.resetToken).digest('hex');
+  const resetPasswordToken = crypto.createHash('sha256').update(req.params.resetToken).digest('hex');
 
   try {
-    const user = await User.findOne({ resetPasswordToken,
+    const user = await User.findOne({ 
+      resetPasswordToken,
       resetPasswordExpires: { $gt: Date.now() }
      });
 
