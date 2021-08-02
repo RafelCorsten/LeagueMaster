@@ -1,6 +1,7 @@
 const Router = require('express').Router;
 const router = Router();
 const leagueController = require('../controllers/leagueController');
+const {protect} = require('../middleware/auth.middleware');
 
 // api_key = 'RGAPI-4bd374ac-6baf-4cc5-9ac3-cdaa1b912677'
 
@@ -18,7 +19,7 @@ router.get('/riot/:server/matches/:puuid', leagueController.getMatchesByPlayerId
 
 
 //Gets last number amount of matches from the db
-router.get('/riot/:server/matches/amount/:number', leagueController.getCertainAmountMatches);
+router.get('/riot/:server/matches/amount/:number', protect, leagueController.getCertainAmountMatches);
 //router.post('/riot/:server/summoners/:summonerName', leagueController)
 // def get_summoner_from_riot_api_and_post_to_db():
 //     summoner_name = Flask.request.args.get('summonerName')

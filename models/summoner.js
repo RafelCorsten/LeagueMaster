@@ -1,18 +1,14 @@
-// 'use strict';
-// const client = require('../config/db');
-// //const db = client.db(process.env.DB_NAME);
+'use strict';
+const mongoose = require('mongoose');
 
 
-// exports.getAll = async () => {
-//   const allSummoners = await summoners.find().toArray();
-//   return allSummoners;
-// };
+const summonerSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true
+  }
+});
 
-// exports.getOne = async (summonerName) => {
-//   const summoner = await summoners.findOne();
-//   return summoner;
-// };
 
-// exports.create = async summoner => {
-//   await summoners.insertOne(summoner);
-// };
+const Summoner = mongoose.model('summoners', summonerSchema);
+module.exports = Summoner;

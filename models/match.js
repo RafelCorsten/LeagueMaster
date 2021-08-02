@@ -1,29 +1,14 @@
-// 'use strict';
-// const client = require('../config/db');
-// const db = client.db(process.env.DB_NAME);
-// const matchesModel = db.collection('matches');
-
-// exports.getAll = async () => {
-//   const allMatches = await matchesModel.find().toArray();
-//   return allMatches;
-// };
-
-// exports.getMatchesByPlayerId = async puuid => {
-//   const allMatches = await matchesModel.find({ "participants.puuid": puuid }).toArray();
-//   return allMatches;
-// };
+'use strict';
+const mongoose = require('mongoose');
 
 
-// exports.getCertainAmountMatches = async number => {
-//   const matches = await matchesModel.aggregate([
-//     { $sort: { gameCreation: -1 } },
-//     { $limit: Number(number) }
-//   ]).toArray();
-
-//   return matches;
-// };
+const matchSchema = new mongoose.Schema({
+  gameCreation: {
+    type: Number,
+    required: true,
+  }
+});
 
 
-// exports.postOne = async match => {
-//   await matchesModel.insertOne(match);
-// };
+const Match = mongoose.model('matches', matchSchema);
+module.exports = Match;
